@@ -1,0 +1,268 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>一台电脑部署多个Github账号 | Snailll</title><meta name="keywords" content="github"><meta name="author" content="Benjamin"><meta name="copyright" content="Benjamin"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="由于一些原因需要在一台windows电脑部署两个hexo博客，部署过程中遇到了很多问题。一个Github账号只能绑定一个自定义域名，其他的仓库需要使用自定义域名+仓库名的形式访问。如果我们希望两个hexo绑定不同的域名，最简单的办法就是注册另一个Github账号了。 那么问题又来了，一台电脑绑定两个Github账号需要两对公钥，在处理第二个公钥时遇到了很多问题，后来Google了相关资料，折腾了一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一台电脑部署多个Github账号">
+<meta property="og:url" content="http://example.com/posts/41411.html">
+<meta property="og:site_name" content="Snailll">
+<meta property="og:description" content="由于一些原因需要在一台windows电脑部署两个hexo博客，部署过程中遇到了很多问题。一个Github账号只能绑定一个自定义域名，其他的仓库需要使用自定义域名+仓库名的形式访问。如果我们希望两个hexo绑定不同的域名，最简单的办法就是注册另一个Github账号了。 那么问题又来了，一台电脑绑定两个Github账号需要两对公钥，在处理第二个公钥时遇到了很多问题，后来Google了相关资料，折腾了一">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-01-26T12:41:29.000Z">
+<meta property="article:modified_time" content="2022-01-26T13:08:43.616Z">
+<meta property="article:author" content="Benjamin">
+<meta property="article:tag" content="github">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/posts/41411"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":300},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '一台电脑部署多个Github账号',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-01-26 21:08:43'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/bj.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/zhheo/JS-Heo@main/bb/showbb_in_index.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://cdn.jsdelivr.net/gh/benjamin0603/img/avatar03.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光机</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-15px;"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Snailll</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时光机</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child" style="left:-15px;"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">一台电脑部署多个Github账号</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-01-26T12:41:29.000Z" title="发表于 2022-01-26 20:41:29">2022-01-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-01-26T13:08:43.616Z" title="更新于 2022-01-26 21:08:43">2022-01-26</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB/">经验分享</a></span></div><div class="meta-secondline"></div></div></div><article class="post-content" id="article-container"><p>由于一些原因需要在一台windows电脑部署两个hexo博客，部署过程中遇到了很多问题。一个Github账号只能绑定一个自定义域名，其他的仓库需要使用<code>自定义域名+仓库名</code>的形式访问。如果我们希望两个hexo绑定不同的域名，最简单的办法就是注册另一个Github账号了。</p>
+<p>那么问题又来了，一台电脑绑定两个Github账号需要两对公钥，在处理第二个公钥时遇到了很多问题，后来Google了相关资料，折腾了一下午才搞定。</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><ul>
+<li>ssh的公钥时Github作为本地仓库和远程仓库链接的唯一标识，一个公钥只能对应一个Github账号；</li>
+<li>一台电脑可以生成多对公私钥，可以通过配置，将不同的公钥上传到不同的Github账号。</li>
+</ul>
+<p>我们在配置完第二个hexo后，使用<code>hexo d</code>命令部署到Github时报错：<code>ERROR: Permission to xxxxxx/xxxxxx.github.io.git denied to xxxxxx.</code></p>
+<h2 id="创建新的密钥"><a href="#创建新的密钥" class="headerlink" title="创建新的密钥"></a>创建新的密钥</h2><h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><p>直接使用以下命令创建新的密钥，然后按两次回车即可：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -f  ~/.ssh/这里是新密钥名称 -C &quot;这里是你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>注意：新的密钥名称一定要区分与就密钥名称。建议使用<code>xxx_rsa</code>名称，<code>xxx</code>自定义即可！</p>
+<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><p>使用下面命令创建新密钥：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;这里是你的邮箱&quot;</span><br></pre></td></tr></table></figure>
+
+<p>一次回车后出现如下提示：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Generating public/private rsa key pair.  </span><br><span class="line"> Enter file in which to save the key (/c/Users/you/.ssh/id_rsa):</span><br></pre></td></tr></table></figure>
+
+<p>此时需要输入新的密钥名称。（参考方法一的命名方式和注意事项）</p>
+<h2 id="配置config"><a href="#配置config" class="headerlink" title="配置config"></a>配置config</h2><p>在本地<code>.ssh</code>文件夹内，查看有没有<code>config</code>文件，如果没有使用下面命令创建：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">touch</span> config</span><br></pre></td></tr></table></figure>
+
+<p>使用vs code或者其他文本编辑工具打开<code>config</code>文件，写入以下配置：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment">#第一个账号，默认使用的账号，不用做任何更改</span></span><br><span class="line"><span class="string">Host</span> <span class="string">github.com</span></span><br><span class="line">    <span class="string">HostName</span> <span class="string">github.com</span></span><br><span class="line">    <span class="string">User</span> <span class="string">git</span></span><br><span class="line">    <span class="string">IdentityFile</span> <span class="string">~/.ssh/id_rsa</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#第二个新账号，#&quot;xxxxxx&quot;为前缀名，可以任意设置，要记住，后面需要用到</span></span><br><span class="line"><span class="string">Host</span> <span class="string">xxxxxx.github.com</span></span><br><span class="line">    <span class="string">HostName</span> <span class="string">github.com</span></span><br><span class="line">    <span class="string">User</span> <span class="string">git</span></span><br><span class="line">    <span class="string">IdentityFile</span> <span class="string">~/.ssh/这里是你创建的新密钥的名称</span></span><br></pre></td></tr></table></figure>
+
+<p>然后将新创建的公钥文件打开，复制里面所有内容，添加到新的Github账号<code>SSH key</code>处。</p>
+<h2 id="清空本地ssh缓存，并添加新的ssh密钥到ssh-agent中"><a href="#清空本地ssh缓存，并添加新的ssh密钥到ssh-agent中" class="headerlink" title="清空本地ssh缓存，并添加新的ssh密钥到ssh agent中"></a>清空本地ssh缓存，并添加新的ssh密钥到ssh agent中</h2><p>使用命令<code>cd ~/.ssh</code>到ssh目录下，依次执行下面命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add -D</span><br><span class="line">ssh-add xxxxxx <span class="comment">#旧密钥名称，一般是id_rsa</span></span><br><span class="line">ssh-add xxxxxx <span class="comment">#新创建的密钥名称</span></span><br></pre></td></tr></table></figure>
+
+<p>如果报错：<code>Could not open a connection to your authentication agent.</code>，请先执行下面命令后再依次执行上面的命令：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-agent bash</span><br></pre></td></tr></table></figure>
+
+<h3 id="验证配置是否成功"><a href="#验证配置是否成功" class="headerlink" title="验证配置是否成功"></a>验证配置是否成功</h3><p>依次执行以下命令，第一个为默认ssh_key验证；第二个为新的ssh_key验证，其中“xxxxxx”为你先前在config文件中的命名：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -T git@github.com</span><br><span class="line">ssh -T git@xxxxxxx.github.com</span><br></pre></td></tr></table></figure>
+
+<p>依次显示以下信息, 则说明配置成功</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Hi 你的用户名! You<span class="string">&#x27;ve successfully authenticated, but GitHub does not provide shell access.</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="取消全局用户名-x2F-邮箱配置"><a href="#取消全局用户名-x2F-邮箱配置" class="headerlink" title="取消全局用户名&#x2F;邮箱配置"></a>取消全局用户名&#x2F;邮箱配置</h2><p>执行如下命令，取消全局用户名和邮箱配置（如果已经设置了全局的话）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global --<span class="built_in">unset</span> user.name</span><br><span class="line">git config --global --<span class="built_in">unset</span> user.email</span><br></pre></td></tr></table></figure>
+
+<h2 id="单独配置用户名-x2F-邮箱"><a href="#单独配置用户名-x2F-邮箱" class="headerlink" title="单独配置用户名&#x2F;邮箱"></a>单独配置用户名&#x2F;邮箱</h2><p>分别进入你的两个Hexo博客.git目录下执行以下命令单独设置用户名&#x2F;邮箱：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config user.name <span class="string">&quot;这里是用户名&quot;</span></span><br><span class="line">git config user.email <span class="string">&quot;这里是你的邮箱&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>如果此时报错：<code>fatal: not in a git directory</code>，说明你没有进入<code>.git</code>目录下，具体路径：<code>hexo/.deploy_git/.git</code>，<code>.git</code>目录是隐藏的，需要你设置隐藏目录可见</p>
+<p>执行以下命令可以查看设置是否成功：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --list</span><br></pre></td></tr></table></figure>
+
+<h2 id="配置文件修改git地址"><a href="#配置文件修改git地址" class="headerlink" title="配置文件修改git地址"></a>配置文件修改git地址</h2><p>打开你的第二个博客Hexo站点配置文件，找到<code>deploy</code>关键字，写入以下配置并保存：</p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repository:</span> <span class="string">git@xxxxxx.github.com:你的用户名/你的用户名.github.io.git</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">main</span></span><br></pre></td></tr></table></figure>
+
+<p>比如我的配置：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@benjamin603.github.com:benjamin603/benjamin603.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+
+<h2 id="Well-Done"><a href="#Well-Done" class="headerlink" title="Well Done!"></a>Well Done!</h2><p>完成上面的配置过程后，使用<code>hexo d</code>命令就可以成功部署新的Hexo到新的Github账号了！</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">Benjamin</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/posts/41411.html">http://example.com/posts/41411.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">Snailll</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/github/">github</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/16107.html"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Hello World</div></div></a></div><div class="next-post pull-right"><a href="/posts/62864.html"><img class="next-cover" src="https://cdn.jsdelivr.net/gh/benjamin603/img/cover/hexoemoji-post-cover.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Hexo中使用emoji表情</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://cdn.jsdelivr.net/gh/benjamin0603/img/avatar03.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Benjamin</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">6</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/benjamin0603"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%96%B0%E7%9A%84%E5%AF%86%E9%92%A5"><span class="toc-number">2.</span> <span class="toc-text">创建新的密钥</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-number">2.1.</span> <span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-number">2.2.</span> <span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AEconfig"><span class="toc-number">3.</span> <span class="toc-text">配置config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B8%85%E7%A9%BA%E6%9C%AC%E5%9C%B0ssh%E7%BC%93%E5%AD%98%EF%BC%8C%E5%B9%B6%E6%B7%BB%E5%8A%A0%E6%96%B0%E7%9A%84ssh%E5%AF%86%E9%92%A5%E5%88%B0ssh-agent%E4%B8%AD"><span class="toc-number">4.</span> <span class="toc-text">清空本地ssh缓存，并添加新的ssh密钥到ssh agent中</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E9%85%8D%E7%BD%AE%E6%98%AF%E5%90%A6%E6%88%90%E5%8A%9F"><span class="toc-number">4.1.</span> <span class="toc-text">验证配置是否成功</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%96%E6%B6%88%E5%85%A8%E5%B1%80%E7%94%A8%E6%88%B7%E5%90%8D-x2F-%E9%82%AE%E7%AE%B1%E9%85%8D%E7%BD%AE"><span class="toc-number">5.</span> <span class="toc-text">取消全局用户名&#x2F;邮箱配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%95%E7%8B%AC%E9%85%8D%E7%BD%AE%E7%94%A8%E6%88%B7%E5%90%8D-x2F-%E9%82%AE%E7%AE%B1"><span class="toc-number">6.</span> <span class="toc-text">单独配置用户名&#x2F;邮箱</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E4%BF%AE%E6%94%B9git%E5%9C%B0%E5%9D%80"><span class="toc-number">7.</span> <span class="toc-text">配置文件修改git地址</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Well-Done"><span class="toc-number">8.</span> <span class="toc-text">Well Done!</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/16107.html" title="Hello World"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"/></a><div class="content"><a class="title" href="/posts/16107.html" title="Hello World">Hello World</a><time datetime="2022-05-18T03:59:16.065Z" title="发表于 2022-05-18 11:59:16">2022-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/41411.html" title="一台电脑部署多个Github账号"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="一台电脑部署多个Github账号"/></a><div class="content"><a class="title" href="/posts/41411.html" title="一台电脑部署多个Github账号">一台电脑部署多个Github账号</a><time datetime="2022-01-26T12:41:29.000Z" title="发表于 2022-01-26 20:41:29">2022-01-26</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/62864.html" title="Hexo中使用emoji表情"><img src="https://cdn.jsdelivr.net/gh/benjamin603/img/cover/hexoemoji-post-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hexo中使用emoji表情"/></a><div class="content"><a class="title" href="/posts/62864.html" title="Hexo中使用emoji表情">Hexo中使用emoji表情</a><time datetime="2022-01-13T09:31:32.000Z" title="发表于 2022-01-13 17:31:32">2022-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/32820.html" title="jsDelivr+Github图床搭建"><img src="https://cdn.jsdelivr.net/gh/benjamin603/img/cover/jsDelivr.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="jsDelivr+Github图床搭建"/></a><div class="content"><a class="title" href="/posts/32820.html" title="jsDelivr+Github图床搭建">jsDelivr+Github图床搭建</a><time datetime="2022-01-13T04:27:32.000Z" title="发表于 2022-01-13 12:27:32">2022-01-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/7305.html" title="butterfly微调合集"><img src="https://cdn.jsdelivr.net/gh/benjamin603/img/cover/butterfly-post-cover.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="butterfly微调合集"/></a><div class="content"><a class="title" href="/posts/7305.html" title="butterfly微调合集">butterfly微调合集</a><time datetime="2022-01-12T13:25:54.000Z" title="发表于 2022-01-12 21:25:54">2022-01-12</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(208deg,#4584ff 0,#4584ff 11%,#ff7676 100%)"><div id="footer-wrap"><div class="copyright">&copy;2022 By Benjamin</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu@4/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'twikoo-9ge81yus6f55c32c',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'twikoo-9ge81yus6f55c32c',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo@1/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
