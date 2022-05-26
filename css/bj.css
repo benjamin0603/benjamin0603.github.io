@@ -20,10 +20,89 @@
 	src:url('/fonts/Candy.ttf'); /* 字体文件路径 */
 	font-display:swap
 }
+@font-face {
+	font-family:aqqxs;
+	src:url(https://cdn1.tianli0.top/gh/L-20021213/static/HarmonyOS_Sans_SC_Medium.subset.woff2);
+	font-display:swap
+}
 h1#site-title {
 	font-family: echo, sans-serif;
   }
-
+a.article-title {
+	font-family:aqqxs,sans-serif
+}
+.content {
+	font-family:aqqxs,sans-serif
+}
+.article-meta-wrap {
+	font-family:aqqxs,sans-serif
+}
+div#bbtalk {
+	font-family:aqqxs,sans-serif
+}
+a#site-name {
+	font-family:aqqxs,sans-serif
+}
+.card-info-avatar.is-center {
+	font-family:aqqxs,sans-serif
+}
+p {
+	font-family:aqqxs,sans-serif
+}
+.card-widget.card-tags {
+	font-family:aqqxs,sans-serif
+}
+.card-widget.card-webinfo {
+	font-family:aqqxs,sans-serif
+}
+element.style {
+	font-family:aqqxs,sans-serif
+}
+.aplayer-music {
+	font-family:aqqxs,sans-serif
+}
+div#hopelight_plus_menu {
+	font-family:aqqxs,sans-serif
+}
+div#menus {
+	font-family:aqqxs,sans-serif
+}
+div#local-search-title {
+	font-family:aqqxs,sans-serif
+}
+input.local-search-box--input {
+	font-family:aqqxs,sans-serif
+}
+div#post-info {
+	font-family:aqqxs,sans-serif
+}
+.post-copyright {
+	font-family:aqqxs,sans-serif
+}
+.sticky_layout {
+	font-family:aqqxs,sans-serif
+}
+.search-dialog {
+	font-family:aqqxs,sans-serif
+}
+main#content-inner {
+	font-family:aqqxs,sans-serif
+}
+p {
+	font-family:aqqxs,sans-serif!important
+}
+#footer-wrap {
+	font-family:aqqxs,sans-serif
+}
+#sidebar #sidebar-menus.open {
+	font-family:aqqxs,sans-serif
+}
+#search-button {
+	font-family:aqqxs,sans-serif
+}
+#article-container code,#article-container pre {
+	font-family:aqqxs,sans-serif!important
+}
 
 
 
@@ -157,4 +236,61 @@ h1#site-title {
     background: transparent!important;
     }
 
+/* 自定义icon */
+.fa-inbox:before {
+  content: '📂';
+  color: orange
+}
+.fa-calendar-alt:before {
+  content: '💢';
+}
+.fa-thumbtack:before {
+  content: '🚀';
+}
+.fa-tag:before {
+  display: none;
+}
+.fa-tags:before {
+  content: '🐞';
+}
+.fa-comment-dots:before {
+  content: '💭';
+}
+.fa-clock-rotate-left:before, .fa-history:before {
+  content: '💨';
+}
 
+.fa-home:before {
+  content: '🏡';
+}
+.fa-search:before {
+  content: '🔎';
+}
+.fa-archive:before {
+  content: '🚅';
+}
+.fa-terminal:before {
+  content: '📍';
+}
+.fa-list:before {
+  content: '♊️';
+}
+.fa-link:before {
+  content: '👿';
+}
+.fa-heart:before {
+  content: '💁';
+}
+.fa-folder-open:before {
+  content: '📇';
+}
+hr:before { 
+  content: '🚲';
+}
+
+/* 分类详情页面  */
+@media screen and (min-width: 1024px){
+  .article-sort-item-img {overflow: hidden; width: 150px; height: 80px;}
+}
+.article-sort-item-img {border-radius: 8px;}
+.article-sort-item-title {font-weight: 600;}
